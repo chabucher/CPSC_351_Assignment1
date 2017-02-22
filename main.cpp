@@ -1,8 +1,8 @@
 #include <iostream>
-#include <string>
+#include <string.h>
 #include <stdio.h>
 #include <unistd.h>
-#inlcude <stdlib.h>
+#include <stdlib.h>
 #include <stdlib.h>
 #include <pthread.h>
 #include <signal.h>
@@ -53,7 +53,6 @@ char * GenerateData (int numberOfBytes)
 void sig_handler(int signum) {
     if (signum != SIGINT) {
         printf("Received invalid signum = %d in sig_handler()\n", signum);
-        ASSERT(signum == SIGINT);
     }
     
     printf("Received SIGINT. Exiting Application\n");
@@ -125,7 +124,7 @@ void child ()
     // result. (5 pts)
 }
 
-
+/*
 int main(int argc, char **argv)
 {
     
@@ -158,6 +157,7 @@ int main(int argc, char **argv)
     
     return 0;
 }
+ */
 
 int main(void) {
     pthread_attr_t attr;
@@ -175,8 +175,6 @@ int main(void) {
                     0666, \
                     &my_mq_attr);
     
-    ASSERT(my_mq != -1);
-    
     pthread_attr_init(&attr);
     pthread_attr_setstacksize(&attr, 1024*1024);
     
@@ -184,14 +182,12 @@ int main(void) {
     status = pthread_create(&thread1, &attr, (void*)&thread1_main, NULL);
     if (status != 0) {
         printf("Failed to create thread1 with status = %d\n", status);
-        ASSERT(status == 0);
     }
     
     printf("Creating thread2\n");
     status = pthread_create(&thread2, &attr, (void*)&thread2_main, NULL);
     if (status != 0) {
         printf("Failed to create thread2 with status = %d\n", status);
-        ASSERT(status == 0);
     }
     
     pthread_join(thread1, NULL);
@@ -212,7 +208,6 @@ void thread1_main(void) {
            exec_period_usecs);
     while(1) {
         status = mq_send(my_mq, (const char*)&counter, sizeof(counter), 1);
-        ASSERT(status != -1);
         usleep(exec_period_usecs);
     }
 }
