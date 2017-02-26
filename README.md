@@ -1,7 +1,4 @@
 # CPSC_351_Assignment1
+# Charles Bucher
 
-To build, simply run `make all`
-
-Hopefully you like me code!
-
-Charles Bucher
+# To build, simply run: make all
