@@ -1,4 +1,10 @@
 #include <iostream>
+#include <stdlib.h>
+#include <stdiio.h>
+#include <cstring>
+#include <cstdlib>
+#include <sys/types.h>
+#include <sys/wait.h>
 #include <sys/msg.h> //Used for message queue calls
 #include <unistd.h> //Used for process calls
 #include <sys/stat.h> //Used for umask(0) in FIFO section
