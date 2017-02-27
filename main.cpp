@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
-#include <stdiio.h>
+#include <stdio.h>
 #include <cstring>
 #include <cstdlib>
 #include <sys/types.h>
